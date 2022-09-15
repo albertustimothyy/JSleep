@@ -1,17 +1,17 @@
 package AlbertusTimothyGunawanJSleepKM;
 
 /**
- * Write a description of class JSleep here.
+ * Praktikum OOP
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Albertus Timothy (
+ * @2106639472
  */
 public class JSleep {
     public static void main(String[] args) {
         System.out.println("Hotel ID: " + getHotelId());
         System.out.println("Hotel Name: " + getHotelName());
         System.out.println("Discount: " + isDiscount());
-        System.out.println("Discount Percentage: " + getDiscountPercentage(100,900));
+        System.out.println("Discount Percentage: " + getDiscountPercentage(100, 900));
         System.out.println("Discounted Price: " + getDiscountedPrice(1000, 10.0f));
         System.out.println("Original Price: " + getOriginalPrice(900, 10.0f));
         System.out.println("Admin Fee Percentage: " + getAdminFeePercentage());
@@ -34,27 +34,26 @@ public class JSleep {
     public static float getDiscountPercentage(int beforeDiscount, int afterDiscount) {
         float discount;
         if (beforeDiscount < afterDiscount) {
-            return 0.0f;
+            discount = 0.0f;
         } else {
             discount = (float) (beforeDiscount - afterDiscount) / beforeDiscount;
             discount *= 100;
-            return discount;
         }
+        return discount;
     }
 
     public static int getDiscountedPrice(int price, float discountPercentage) {
+        float priceAfter;
         if (discountPercentage > 100.0f) {
-            discountPercentage = 100.0f;
-            return 0;
+            priceAfter = 0.0f;
         } else {
-            price *= ((100.0f - discountPercentage) / 100.0f);
-            return price;
+            priceAfter = price * ((100.0f - discountPercentage) / 100.0f);
         }
+        return (int) priceAfter;
     }
 
     public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
-        float discountPrice = 100.0f / (100.0f - discountPercentage);
-        float normalPrice = discountPrice * discountedPrice;
+        float normalPrice = (100.0f / (100.0f - discountPercentage)) * discountedPrice;
         return (int) normalPrice;
     }
 
@@ -63,8 +62,9 @@ public class JSleep {
     }
 
     public static int getAdminFee(int price) {
-        price *= getAdminFeePercentage();
-        return price;
+        float adminPrice;
+        adminPrice = price * getAdminFeePercentage();
+        return (int) adminPrice;
     }
 
     public static int getTotalPrice(int price, int numberOfNight) {
