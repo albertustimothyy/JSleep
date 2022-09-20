@@ -6,19 +6,22 @@ package AlbertusTimothyGunawanJSleepKM;
  * @Albertus Timothy (
  * @2106639472
  */
+
 public class JSleep {
     public static void main(String[] args) {
-        System.out.println("Hotel ID: " + getHotelId());
-        System.out.println("Hotel Name: " + getHotelName());
-        System.out.println("Discount: " + isDiscount());
-        System.out.println("Discount Percentage: " + getDiscountPercentage(100, 900));
-        System.out.println("Discounted Price: " + getDiscountedPrice(1000, 10.0f));
-        System.out.println("Original Price: " + getOriginalPrice(900, 10.0f));
-        System.out.println("Admin Fee Percentage: " + getAdminFeePercentage());
-        System.out.println("Admin Fee: " + getAdminFee(1000));
-        System.out.println("Total Price: " + getTotalPrice(10000, 2));
+        Room test = createRoom();
+        System.out.println(test.name);
+        System.out.println(test.size);
+        System.out.println(test.price.price);
+        System.out.println(test.facility);
     }
 
+    public static Room createRoom() {
+        Price price = new Price(10000, 5);
+        Room room = new Room("Hotel", 30, price, Facility.Bathtub);
+        return room;
+    }
+    
     public static int getHotelId() {
         return 0;
     }
