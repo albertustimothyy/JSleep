@@ -38,14 +38,10 @@ public class Price {
             this.discount = 100;
         }
         priceAfter = this.price * ((100 - discount) / 100);
-        this.price = priceAfter;
-        return this.price;
+        return priceAfter;
     }
 
     private double getRebatedPrice() {
-        if (this.rebate > this.price) {
-            this.rebate = this.price;
-        }
-        return (this.price - this.rebate);
+        return (this.rebate > this.price) ? 0 : (this.price - this.rebate);
     }
 }

@@ -17,7 +17,7 @@ public class JSleep {
     }
 
     public static Room createRoom() {
-        Price price = new Price(10000, 5);
+        Price price = new Price(100000, 5);
         Room room = new Room("Hotel", 30, price, Facility.Bathtub);
         return room;
     }

@@ -24,12 +24,11 @@ public class Rating {
 
     public double getAverage() {
         double mean;
-        mean = this.total / this.count;
-
-        if (mean < 0) {
+        if (this.count == 0) {
             mean = 0;
+        } else {
+            mean = this.total / this.count;
         }
-
         return mean;
     }
 
@@ -41,4 +40,3 @@ public class Rating {
         return this.total;
     }
 }
-
