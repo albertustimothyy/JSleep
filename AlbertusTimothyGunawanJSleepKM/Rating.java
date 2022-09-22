@@ -40,3 +40,5 @@ public class Rating {
         return this.total;
     }
 }
+
+

@@ -8,8 +8,7 @@ package AlbertusTimothyGunawanJSleepKM;
  * @2106639472
  */
 
-public enum Facility
-{
+public enum Facility {
     WiFi,
     Bathtub,
     Balcony,

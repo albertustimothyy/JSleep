@@ -15,13 +15,13 @@ public class JSleep {
         System.out.println(test.price.price);
         System.out.println(test.facility);
     }
-
+    
     public static Room createRoom() {
         Price price = new Price(100000, 5);
         Room room = new Room("Hotel", 30, price, Facility.Bathtub);
         return room;
     }
-    
+
     public static int getHotelId() {
         return 0;
     }
