@@ -8,5 +8,5 @@ comment2.target=Payment(int,\ Account,\ Renter,\ java.lang.String,\ int,\ java.l
 comment3.params=
 comment3.target=java.lang.String\ print()
 comment4.params=
-comment4.target=int\ getRoomid()
+comment4.target=int\ getRoomId()
 numComments=5

@@ -10,27 +10,29 @@ package AlbertusTimothyGunawanJSleepKM;
 public class Payment extends Invoice{
     public String to;
     public String from;
-    private int roomid;
+    private int roomId;
 
-    Payment(int id, int buyerId, int renterId, String time, int roomId, String from, String to) {
+    public Payment(int id, int buyerId, int renterId, String time, int roomId, String from, String to) {
         super(id, buyerId, renterId, time);
-        this.roomid = roomId;
+        this.roomId = roomId;
         this.from = from;
         this.to = to;
     }
-    Payment(int id, Account buyer, Renter renter, String time, int roomId, String from, String to) {
+    public Payment(int id, Account buyer, Renter renter, String time, int roomId, String from, String to) {
         super(id, buyer, renter, time);
-        this.roomid = roomId;
+        this.roomId = roomId;
         this.from = from;
         this.to = to;
     }
 
     public String print() {
-        return "\nRoom Id: " + this.roomid + "\nFrom: " + this.from + "\nTo: " + this.to;
+        return "\nRoom Id: " + this.roomId + "\nFrom: " + this.from + "\nTo: " + this.to;
     }
 
-    public int getRoomid() {
-        return roomid;
+    public int getRoomId() {
+        return roomId;
     }
 }
+
+
 

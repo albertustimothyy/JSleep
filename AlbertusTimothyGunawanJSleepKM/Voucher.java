@@ -16,11 +16,12 @@ public class Voucher extends Serializable {
     public double minimum;
     public double cut;
 
-    Voucher(int id, String name, int code, Type type, double minimum, double cut) {
+    public Voucher(int id, String name, int code, Type type, boolean used, double minimum, double cut) {
         super(id);
         this.name = name;
         this.code = code;
         this.type = type;
+        this.used = used;
         this.minimum = minimum;
         this.cut = cut;
     }
@@ -43,5 +44,8 @@ public class Voucher extends Serializable {
         }
     }
 }
+
+
+
 
 

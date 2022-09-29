@@ -9,7 +9,7 @@ package AlbertusTimothyGunawanJSleepKM;
  */
 
 public class Price {
-//    public double rebate;
+    //    public double rebate;
     public double price;
     public double discount;
 
@@ -23,6 +23,10 @@ public class Price {
         this.price = price;
         this.discount = discount;
 //        this.rebate = 0.0d;
+    }
+
+    public String toString() {
+        return "Price: " + this.price + "\nDiscount: " + this.discount;
     }
 
 //    public Price(double price, double rebate) {

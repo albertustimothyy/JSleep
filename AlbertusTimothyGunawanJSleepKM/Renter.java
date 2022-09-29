@@ -13,24 +13,24 @@ public class Renter extends Serializable {
     public String address = "";
     public String username;
 
-    Renter(int id, String username) {
+    public Renter(int id, String username) {
         super(id);
         this.username = username;
     }
 
-    Renter(int id,String username, String address) {
+    public Renter(int id,String username, String address) {
         super(id);
         this.username = username;
         this.address = address;
     }
 
-    Renter(int id,String username, int phoneNumber) {
+    public Renter(int id,String username, int phoneNumber) {
         super(id);
         this.username = username;
         this.phoneNumber = phoneNumber;
     }
 
-    Renter(int id,String username, int phoneNumber, String address) {
+    public Renter(int id,String username, int phoneNumber, String address) {
         super(id);
         this.username = username;
         this.phoneNumber = phoneNumber;
@@ -38,4 +38,6 @@ public class Renter extends Serializable {
     }
 
 }
+
+
 
