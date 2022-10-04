@@ -1,16 +1,10 @@
 package AlbertusTimothyGunawanJSleepKM;
+import java.util.Calendar;
 
-
-/**
- * Write a description of class Invoice here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Invoice extends Serializable {
     public int buyerId;
     public int renterId;
-    public String time;
+    public Calendar time;
     public enum RoomRating {
         NONE, BAD, NEUTRAL, GOOD
     }
@@ -20,20 +14,20 @@ public class Invoice extends Serializable {
     public RoomRating rating;
     public PaymentStatus status;
 
-    protected Invoice(int id, int buyerId, int renterId, String time) {
+    protected Invoice(int id, int buyerId, int renterId) {
         super(id);
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = time;
+        this.time = Calendar.getInstance();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
 
-    public Invoice(int id, Account buyer, Renter renter, String time) {
+    public Invoice(int id, Account buyer, Renter renter) {
         super(id);
         this.buyerId = buyer.id;
         this.renterId = renter.id;
-        this.time = time;
+        this.time = Calendar.getInstance();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
@@ -42,6 +36,7 @@ public class Invoice extends Serializable {
         return "Buyer Id: " + this.buyerId + "\nRenter Id: " + this.renterId + "\nTime: " + this.time;
     }
 }
+
 
 
 

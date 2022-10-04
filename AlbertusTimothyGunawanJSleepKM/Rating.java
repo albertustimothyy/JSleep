@@ -1,13 +1,5 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-
-/**
- * Praktikum OOP
- *
- * @Albertus Timothy (
- * @2106639472
- */
-
 public class Rating {
     private long total;
     private long count;

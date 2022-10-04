@@ -1,13 +1,5 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-
-/**
- * Write a description of class Renter here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-
 public class Renter extends Serializable {
     public int phoneNumber = 0;
     public String address = "";
@@ -38,6 +30,7 @@ public class Renter extends Serializable {
     }
 
 }
+
 
 
 

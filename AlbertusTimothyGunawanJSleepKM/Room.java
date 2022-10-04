@@ -1,14 +1,6 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-
-/**
- * Praktikum OOP
- *
- * @Albertus Timothy (
- * @2106639472
- */
-
-public class Room extends Serializable {
+public class Room extends Serializable implements FileParser{
     public int size;
     public String name;
     public Facility facility;
@@ -29,8 +21,16 @@ public class Room extends Serializable {
     }
 
     public String toString() {
-        return "Room ID: " + this.id + "\nRoom Name: " + this.name + "\nRoom Size: " + this.size + "\nRoom Facility: " + this.facility +
-                "\n" + this.price + "\nAddress: " + this.address + "\nBed Type: " + this.bedType +
+        return "Room ID: " + this.id + "\nRoom Name: " + this.name + "\nRoom Size: " + this.size + "\nRoom Facility: "
+                + this.facility + "\n" + this.price + "\nAddress: " + this.address + "\nBed Type: " + this.bedType +
                 "\nCity: " + this.city;
+    }
+
+    public Object write() {
+        return null;
+    }
+
+    public boolean read(String s) {
+        return false;
     }
 }

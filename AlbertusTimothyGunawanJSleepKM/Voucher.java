@@ -1,14 +1,6 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-
-/**
- * Praktikum OOP
- *
- * @Albertus Timothy (
- * @2106639472
- */
-
-public class Voucher extends Serializable {
+public class Voucher extends Serializable implements FileParser {
     public String name;
     private boolean used;
     public int code;
@@ -43,7 +35,17 @@ public class Voucher extends Serializable {
             return (this.cut > price.price) ? 0 : (price.price - this.cut);
         }
     }
+
+    public Object write() {
+        return null;
+    }
+
+    public boolean read(String s) {
+        return false;
+    }
 }
+
+
 
 
 

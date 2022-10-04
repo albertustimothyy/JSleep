@@ -1,13 +1,5 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-
-/**
- * Praktikum OOP
- *
- * @Albertus Timothy (
- * @2106639472
- */
-
 public class Price {
     //    public double rebate;
     public double price;
