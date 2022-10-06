@@ -34,7 +34,7 @@ public class Payment extends Invoice{
     }
     public static boolean availability(Date from, Date to, Room room) {
         for(Date i : room.booked){
-            if (i.after(from) || i.equals(from)) {
+            if (i.after(from)) {
                 return false;
             }
         }
