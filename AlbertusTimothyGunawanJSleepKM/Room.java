@@ -1,4 +1,6 @@
 package AlbertusTimothyGunawanJSleepKM;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Room extends Serializable implements FileParser{
     public int size;
@@ -8,6 +10,7 @@ public class Room extends Serializable implements FileParser{
     public BedType bedType;
     public City city;
     public String address;
+    public ArrayList<Date> booked = new ArrayList<>();
 
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address) {
         super(id);

@@ -1,25 +1,23 @@
 package AlbertusTimothyGunawanJSleepKM;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
 public class Payment extends Invoice{
-    public Calendar to;
-    public Calendar from;
+    public Date to;
+    public Date from;
     private int roomId;
 
-    public Payment(int id, int buyerId, int renterId, int roomId) {
+    public Payment(int id, int buyerId, int renterId, int roomId, Date from, Date to) {
         super(id, buyerId, renterId);
         this.roomId = roomId;
-        this.from = Calendar.getInstance();
-        this.to = Calendar.getInstance();
-        this.to.add(Calendar.DATE, 2);
+        this.from = from;
+        this.to = to;
     }
-    public Payment(int id, Account buyer, Renter renter, String time, int roomId, String from, String to) {
+    public Payment(int id, Account buyer, Renter renter, String time, int roomId, Date from, Date to) {
         super(id, buyer, renter);
         this.roomId = roomId;
-        this.from = Calendar.getInstance();
-        this.to = Calendar.getInstance();
-        this.to.add(Calendar.DATE, 2);
+        this.from = from;
+        this.to = to;
     }
 
     public String print() {
@@ -30,17 +28,33 @@ public class Payment extends Invoice{
         return roomId;
     }
 
-    public String getDuration() {
-        SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
-        String duration = SDFormat.format(from.getTime()) + " - " + SDFormat.format(to.getTime());
-        return duration;
-    }
-
     public String getTime() {
-        SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
+        SimpleDateFormat SDFormat = new SimpleDateFormat("'Formatted Date = 'dd MMMM yyyy");
         return SDFormat.format(time.getTime());
     }
+    public static boolean availability(Date from, Date to, Room room) {
+        for(Date i : room.booked){
+            if (i.after(from) || i.equals(from)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean makeBooking(Date from, Date to, Room room) {
+        if(from.after(to)){
+            return false;
+        }
+        if (availability(from, to, room)) {
+            room.booked.add(from);
+            room.booked.add(to);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
 
 
 
