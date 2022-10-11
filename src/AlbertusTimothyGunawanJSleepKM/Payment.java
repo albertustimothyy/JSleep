@@ -1,6 +1,7 @@
 package AlbertusTimothyGunawanJSleepKM;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 public class Payment extends Invoice{
     public Date to;
@@ -13,7 +14,7 @@ public class Payment extends Invoice{
         this.from = from;
         this.to = to;
     }
-    public Payment(int id, Account buyer, Renter renter, String time, int roomId, Date from, Date to) {
+    public Payment(int id, Account buyer, Renter renter, int roomId, Date from, Date to) {
         super(id, buyer, renter);
         this.roomId = roomId;
         this.from = from;
@@ -33,23 +34,36 @@ public class Payment extends Invoice{
         return SDFormat.format(time.getTime());
     }
     public static boolean availability(Date from, Date to, Room room) {
-        for(Date i : room.booked){
-            if (i.after(from)) {
+        if(from.after(to) || to.before(from) || from.equals(to)){
+            return false;
+        }
+
+        for (Date i : room.booked) {
+
+            if (from.equals(i)) {
                 return false;
+            } else if(from.before(i)){
+                if(from.before(i) && to.after(i)){
+                    return false;
+                }
             }
         }
+
         return true;
     }
 
     public static boolean makeBooking(Date from, Date to, Room room) {
-        if(from.after(to)){
-            return false;
-        }
-        if (availability(from, to, room)) {
-            room.booked.add(from);
-            room.booked.add(to);
+        if(availability(from, to, room)){
+            while (from.before(to)){
+                room.booked.add(from); // Assign ke array
+                Calendar tempVar = Calendar.getInstance();
+                tempVar.setTime(from);
+                tempVar.add(Calendar.DATE, 1);
+                from = tempVar.getTime();
+            }
             return true;
-        } else {
+        }
+        else{
             return false;
         }
     }

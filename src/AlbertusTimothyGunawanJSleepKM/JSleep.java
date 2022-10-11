@@ -1,9 +1,13 @@
 package AlbertusTimothyGunawanJSleepKM;
-import java.sql.*;
-
+import java.util.ArrayList;
 public class JSleep {
     public static void main(String[] args) {
-        System.out.println("Hello from Intellij!");
+        ArrayList<Room> RoomSerialized = new ArrayList<Room>();
+
+        for(int i = 0; i<5; i++){
+            RoomSerialized.add(i, JSleep.createRoom());
+            System.out.println(RoomSerialized.get(i).toString() + "\n");
+        }
     }
 
     public static Room createRoom() {
