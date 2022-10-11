@@ -19,11 +19,11 @@ public class Serializable {
         mapCounter.put(this.getClass(), this.id);
     }
 
-    public <T> Integer setClosingId(Class<T> set, int num){
+    public static <T> Integer setClosingId(Class<T> set, int num){
         return mapCounter.replace(set, num);
     }
 
-    public <T> Integer getClosingId(Class<T> get){
+    public static <T> Integer getClosingId(Class<T> get){
         return mapCounter.get(get);
     }
 
