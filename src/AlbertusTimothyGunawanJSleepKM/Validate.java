@@ -3,17 +3,21 @@ import java.util.ArrayList;
 
 public class Validate {
     public static ArrayList filter (Price[] list, int value, boolean less){
-    ArrayList price = new ArrayList<>();
-
-        for (Price p: list) {
-            if (less && p.price <= value) {
-                price.add(p.price);
-            }
-            else if (!less && p.price > value) {
-                price.add(p.price);
+        ArrayList filteredPrice = new ArrayList();
+        if(less == true) {
+            for (Price iterator : list) {
+                if(iterator.price <= value){
+                    filteredPrice.add(iterator.price);
+                }
             }
         }
-        return price;
+        else{
+            for (Price iterator : list) {
+                if(iterator.price > value){
+                    filteredPrice.add(iterator.price);
+                }
+            }
+        }
+        return filteredPrice;
     }
-
 }

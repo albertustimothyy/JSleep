@@ -160,6 +160,7 @@ public class Algorithm {
         int lastPage = (pageSize * (page + 1)) - 1;
 
         List<T> list = new ArrayList<>();
+        list = collect(iterator, pred);
 
         while (iterator.hasNext()) {
             T current = iterator.next();

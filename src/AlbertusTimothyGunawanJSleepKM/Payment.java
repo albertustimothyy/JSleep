@@ -29,44 +29,41 @@ public class Payment extends Invoice{
         return roomId;
     }
 
-    public String getTime() {
-        SimpleDateFormat SDFormat = new SimpleDateFormat("'Formatted Date = 'dd MMMM yyyy");
-        return SDFormat.format(time.getTime());
+    public String getTime(){
+        SimpleDateFormat SDFormat = new SimpleDateFormat("'Formatted Date' = dd MMMM yyyy");
+        String currTime = SDFormat.format(time.getTime());
+        return currTime;
     }
-    public static boolean availability(Date from, Date to, Room room) {
-        if(from.after(to) || to.before(from) || from.equals(to)){
+    public static boolean availability(Date from,Date to,Room room){
+        Calendar start = Calendar.getInstance();
+        start.setTime(from);
+        Calendar end = Calendar.getInstance();
+        end.setTime(to);
+        if(start.after(end) || start.equals(end)){
             return false;
         }
-
-        for (Date i : room.booked) {
-
-            if (from.equals(i)) {
+        for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
+            if(room.booked.contains(date)){
                 return false;
-            } else if(from.before(i)){
-                if(from.before(i) && to.after(i)){
-                    return false;
-                }
             }
         }
-
         return true;
     }
 
-    public static boolean makeBooking(Date from, Date to, Room room) {
+    public static boolean makeBooking(Date from,Date to,Room room){
         if(availability(from, to, room)){
-            while (from.before(to)){
-                room.booked.add(from); // Assign ke array
-                Calendar tempVar = Calendar.getInstance();
-                tempVar.setTime(from);
-                tempVar.add(Calendar.DATE, 1);
-                from = tempVar.getTime();
+            Calendar start = Calendar.getInstance();
+            start.setTime(from);
+            Calendar end = Calendar.getInstance();
+            end.setTime(to);
+            for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
+                room.booked.add(date);
             }
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     }
+
 }
 
 

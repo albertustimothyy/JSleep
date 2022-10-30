@@ -18,20 +18,20 @@ public class Serializable {
         this.id = id;
         mapCounter.put(this.getClass(), this.id);
     }
-    public int CompareTo(Serializable temp){
-        return ((Integer)this.id).compareTo(temp.id);
+    public int compareTo(Serializable other) {
+        return Integer.compare(this.id, other.id);
     }
     public boolean equals(Object temp){
         return (temp instanceof Serializable && ((Serializable) temp).id == this.id);
     }
-    public boolean equals(Serializable temp){
-        return temp.id == this.id;
+    public boolean equals(Serializable other) {
+        return other.id == id;
     }
     public static <T> Integer getClosingId(Class<T> get){
         return mapCounter.get(get);
     }
     public static <T> Integer setClosingId(Class<T> set, int num){
-        return mapCounter.replace(set, num);
+        return mapCounter.put(set, num);
     }
 
 
