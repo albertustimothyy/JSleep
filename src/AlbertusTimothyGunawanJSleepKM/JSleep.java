@@ -31,14 +31,14 @@ public class JSleep {
         }
     }
 
-    public static List<Room> filterByCity(List<Room> table, String city, int page, int pageSize) {
-        return Algorithm.paginate(table, page, pageSize, room -> room.city.toString().toLowerCase().contains(city.toLowerCase()));
+    public static List<Room> filterByCity(List<Room> list, String city, int page, int pageSize) {
+        return Algorithm.paginate(list, page, pageSize, room -> room.city.toString().toLowerCase().contains(city.toLowerCase()));
     }
-    public static List<Room> filterByPrice(List<Room> table, double minPrice, double maxPrice){
-        return Algorithm.<Room>collect(table, room -> room.price.price >= minPrice && room.price.price <= maxPrice);
+    public static List<Room> filterByPrice(List<Room> list, double minPrice, double maxPrice){
+        return Algorithm.<Room>collect(list, room -> room.price.price >= minPrice && room.price.price <= maxPrice);
     }
-    public static List<Room> filterByAccountId(List<Room> table, int accountId, int page, int pageSize){
-        return Algorithm.paginate(table, page,pageSize,room -> room.accountId == accountId);
+    public static List<Room> filterByAccountId(List<Room> list, int accountId, int page, int pageSize){
+        return Algorithm.paginate(list, page,pageSize,room -> room.accountId == accountId);
     }
 //    public static Room createRoom() {
 //        // public Room(int id, String name, int size, Price price, Facility facility, City city, String address)
