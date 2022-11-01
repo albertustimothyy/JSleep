@@ -1,6 +1,6 @@
 package AlbertusTimothyGunawanJSleepKM;
 
-public class Voucher extends Serializable implements FileParser {
+public class Voucher extends Serializable {
     public String name;
     private boolean used;
     public int code;
@@ -36,13 +36,11 @@ public class Voucher extends Serializable implements FileParser {
         }
     }
 
-    public Object write() {
-        return null;
-    }
 
-    public boolean read(String s) {
-        return false;
-    }
+
+//    public boolean read(String s) {
+//        return false;
+//    }
 }
 
 

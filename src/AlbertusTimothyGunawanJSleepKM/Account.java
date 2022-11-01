@@ -1,8 +1,8 @@
 package AlbertusTimothyGunawanJSleepKM;
 
 
-public class Account extends Serializable implements FileParser {
-    public String name;
+public class Account extends Serializable {
+        public String name;
     public String email;
     public String password;
 
@@ -16,13 +16,7 @@ public class Account extends Serializable implements FileParser {
     public String toString() {
         return "Account ID: " + this.id + "\nAccount Name: " + this.name + "\nAccount Email: " + this.email + "\nAccount Password: " + this.password;
     }
-    public Object write() {
-        return null;
-    }
 
-    public boolean read(String s) {
-        return false;
-    }
 }
 
 

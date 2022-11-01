@@ -2,7 +2,7 @@ package AlbertusTimothyGunawanJSleepKM;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Room extends Serializable implements FileParser{
+public class Room extends Serializable{
     public int size;
     public String name;
     public Facility facility;
@@ -10,10 +10,12 @@ public class Room extends Serializable implements FileParser{
     public BedType bedType;
     public City city;
     public String address;
+    public int accountId;
     public ArrayList<Date> booked = new ArrayList<>();
 
-    public Room(String name, int size, Price price, Facility facility, City city, String address) {
+    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address) {
         super();
+        this.accountId = accountId;
         this.size = size;
         this.name = name;
         this.facility = facility;
@@ -29,11 +31,4 @@ public class Room extends Serializable implements FileParser{
                 "\nCity: " + this.city;
     }
 
-    public Object write() {
-        return null;
-    }
-
-    public boolean read(String s) {
-        return false;
-    }
 }
