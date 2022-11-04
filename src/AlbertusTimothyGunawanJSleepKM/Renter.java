@@ -7,8 +7,8 @@ public class Renter extends Serializable {
     public String phoneNumber;
     public String address = "";
     public String username;
-    public static final String REGEX_NAME = "^[A-Z][a-z0-9_]{4,21}$";
-    public static final String REGEX_PHONE = "[0-9]{9,12}";
+    public static final String REGEX_NAME = "^[A-Z][a-z0-9_]{4,20}$";
+    public static final String REGEX_PHONE = "^[0-9]{9,12}$";
 
     public Renter(String username, String phoneNumber, String address) {
         super();
@@ -50,9 +50,4 @@ public class Renter extends Serializable {
 //        this.phoneNumber = phoneNumber;
 //        this.address = address;
 //    }
-
 }
-
-
-
-
