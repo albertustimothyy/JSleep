@@ -14,7 +14,7 @@ public class JSleep {
             ThreadingObject thread = new ThreadingObject("Thread " + i);
         }
         try {
-            String filepath =  "D:\\Kuliah\\Semester 3\\Pemrograman Berorientasi Objek dan Praktikum 01\\Praktikum\\JSleep\\src\\json\\account.json";
+            String filepath =  "src\\json\\account.json";
 
             JsonTable<Account>  tableAccount = new JsonTable<>(Account.class, filepath);
             tableAccount.add(new Account("name", "email", "password"));
