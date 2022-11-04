@@ -9,11 +9,6 @@ import java.util.Locale;
 import com.google.gson.*;
 
 public class JSleep {
-//    class Country{
-//        public String name;
-//        public int population;
-//        public List<String> listOfStates;
-//    }
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             ThreadingObject thread = new ThreadingObject("Thread " + i);
