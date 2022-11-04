@@ -10,6 +10,10 @@ import com.google.gson.*;
 
 public class JSleep {
     public static void main(String[] args) {
+        Account testRegex = new Account("Albert", "supriyono@ui.ac.id", "Albert1234");
+        Account testRegexFail = new Account("Kemas", "_kemasrafly@ui.ac.id", "kemas");
+        System.out.println(testRegex.validate());
+        System.out.println(testRegexFail.validate());
         for (int i = 0; i < 10; i++) {
             ThreadingObject thread = new ThreadingObject("Thread " + i);
         }
