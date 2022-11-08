@@ -25,12 +25,12 @@ public class AccountController implements BasicGetController<Account>
 
     }
 
-    @PostMapping("/{id}/topUp")
+    @PostMapping("/account/{id}/topUp")
     public boolean topUp (@RequestParam int id, @RequestParam double balance) {
         return false;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/account/register")
     public Account register( @RequestParam String name, @RequestParam String email, @RequestParam String password) {
         Account newAccount = new Account(name, email, password);
         if ((name.isBlank()) == false) {
@@ -52,7 +52,7 @@ public class AccountController implements BasicGetController<Account>
         return accountTable;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/account/login")
     public Account login( @RequestParam String email, @RequestParam String password) {
         for (Account account : getJsonTable()) {
             if (account.email.equals(email) && account.password.equals(password)) {
@@ -62,7 +62,7 @@ public class AccountController implements BasicGetController<Account>
         return null;
     }
 
-    @PostMapping("/{id}/registerRenter")
+    @PostMapping("/account/{id}/registerRenter")
     public Renter registerRenter (@RequestParam int id, @RequestParam String username, @RequestParam  String address, @RequestParam String phoneNumber) {
         return null;
     }
