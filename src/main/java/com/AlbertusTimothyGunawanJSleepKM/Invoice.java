@@ -1,4 +1,6 @@
 package com.AlbertusTimothyGunawanJSleepKM;
+import com.AlbertusTimothyGunawanJSleepKM.dbjson.Serializable;
+
 import java.util.Date;
 
 public class Invoice extends Serializable {

@@ -1,8 +1,10 @@
 package com.AlbertusTimothyGunawanJSleepKM;
+import com.AlbertusTimothyGunawanJSleepKM.dbjson.Serializable;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Room extends Serializable{
+public class Room extends Serializable {
     public int size;
     public String name;
     public Facility facility;

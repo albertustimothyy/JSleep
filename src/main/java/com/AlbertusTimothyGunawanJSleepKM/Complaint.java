@@ -1,6 +1,8 @@
 package com.AlbertusTimothyGunawanJSleepKM;
 
-public class Complaint extends Serializable{
+import com.AlbertusTimothyGunawanJSleepKM.dbjson.Serializable;
+
+public class Complaint extends Serializable {
     public String desc;
     public String date;
 

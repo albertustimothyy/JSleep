@@ -1,5 +1,7 @@
 package com.AlbertusTimothyGunawanJSleepKM;
 
+import com.AlbertusTimothyGunawanJSleepKM.dbjson.Serializable;
+
 public class Voucher extends Serializable {
     public String name;
     private boolean used;

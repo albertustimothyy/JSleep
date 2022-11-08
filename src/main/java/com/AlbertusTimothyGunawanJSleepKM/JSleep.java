@@ -6,13 +6,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java. util.List;
 import java.util.Locale;
+
+import com.AlbertusTimothyGunawanJSleepKM.dbjson.JsonDBEngine;
 import com.google.gson.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JSleep {
     public static void main(String[] args) {
+        JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(()->JsonDBEngine.join()));
     }
 
     public static List<Room> filterByCity(List<Room> list, String city, int page, int pageSize) {
