@@ -29,11 +29,7 @@ public class Payment extends Invoice{
         return roomId;
     }
 
-    public String getTime(){
-        SimpleDateFormat SDFormat = new SimpleDateFormat("'Formatted Date' = dd MMMM yyyy");
-        String currTime = SDFormat.format(time.getTime());
-        return currTime;
-    }
+
     public static boolean availability(Date from,Date to,Room room){
         Calendar start = Calendar.getInstance();
         start.setTime(from);

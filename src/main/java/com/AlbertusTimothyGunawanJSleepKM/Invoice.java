@@ -6,7 +6,7 @@ import java.util.Date;
 public class Invoice extends Serializable {
     public int buyerId;
     public int renterId;
-    public Date time;
+
     public enum RoomRating {
         NONE, BAD, NEUTRAL, GOOD
     }
@@ -20,7 +20,6 @@ public class Invoice extends Serializable {
         super();
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
@@ -29,13 +28,12 @@ public class Invoice extends Serializable {
         super();
         this.buyerId = buyer.id;
         this.renterId = renter.id;
-        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
 
     public String print() {
-        return "Buyer Id: " + this.buyerId + "\nRenter Id: " + this.renterId + "\nTime: " + this.time;
+        return "Buyer Id: " + this.buyerId + "\nRenter Id: " + this.renterId;
     }
 }
 
