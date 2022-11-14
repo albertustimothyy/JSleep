@@ -29,7 +29,10 @@ public class AccountController implements BasicGetController<Account> {
     }
 
     @PostMapping("/{id}/topUp")
-    boolean topUp (@RequestParam int id, @RequestParam double balance) {
+    boolean topUp (
+            @RequestParam int id,
+            @RequestParam double balance
+    ) {
         for(Account singleAccount : accountTable) {
             if(singleAccount.id == id) {
                 singleAccount.balance += balance;
@@ -40,7 +43,11 @@ public class AccountController implements BasicGetController<Account> {
     }
 
     @PostMapping("/register")
-    Account register( @RequestParam String name, @RequestParam String email, @RequestParam String password) {
+    Account register(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String password
+    ) {
         String generatedPassword = null;
         for (Account account : accountTable){
             if(account.email.equals(email) || (name.isBlank()) || account.validate()){
@@ -70,7 +77,10 @@ public class AccountController implements BasicGetController<Account> {
     }
 
     @PostMapping("/login")
-    Account login(@RequestParam String email, @RequestParam String password) {
+    Account login (
+            @RequestParam String email,
+            @RequestParam String password
+    ) {
         String generatedPassword = null;
         try{
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -93,10 +103,16 @@ public class AccountController implements BasicGetController<Account> {
     }
 
     @PostMapping("/{id}/registerRenter")
-    Renter registerRenter (@RequestParam int id, @RequestParam String username, @RequestParam  String address, @RequestParam String phoneNumber) {
+    Renter registerRenter (
+            @RequestParam int id,
+            @RequestParam String username,
+            @RequestParam  String address,
+            @RequestParam String phoneNumber
+    ) {
         for (Account account : accountTable){
-            if((account.id == id) && (account.renter == null)){
-                return(new Renter(username, phoneNumber, address));
+            if((account != null) && (account.renter == null)){
+                account.renter = new Renter(username, phoneNumber, address);
+                return account.renter;
             }
         }
         return null;
