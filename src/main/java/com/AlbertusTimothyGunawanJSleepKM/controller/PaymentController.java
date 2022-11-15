@@ -52,19 +52,18 @@ public class PaymentController implements BasicGetController<Payment> {
             return paymentCheck;
         }
     }
-    @PostMapping("/{id}/cancel ")
+    @PostMapping("/{id}/cancel")
     public boolean cancel (
             @RequestParam int id
     ) {
-        Payment payment = Algorithm.<Payment>find(paymentTable,paymentTemp -> paymentTemp.id == id);
+        Payment payment = Algorithm.<Payment>find(getJsonTable(), temp -> temp.id == id);
 
         if (payment == null || payment.status != Invoice.PaymentStatus.WAITING) {
             return false;
         } else {
-            payment.status = Invoice.PaymentStatus.FAILED;
-
             Account buyer = Algorithm.<Account>find(AccountController.accountTable, account -> account.id == payment.buyerId);
             Room room = Algorithm.<Room>find(RoomController.roomTable, room1 -> room1.id == payment.getRoomId());
+            payment.status = Invoice.PaymentStatus.FAILED;
             buyer.balance += room.price.price;
             return true;
         }
@@ -74,7 +73,7 @@ public class PaymentController implements BasicGetController<Payment> {
     public boolean accept (
             @RequestParam int id
     ) {
-        Payment payment = Algorithm.<Payment>find(paymentTable, paymentTemp -> paymentTemp.id == id);
+        Payment payment = Algorithm.<Payment>find(getJsonTable(), temp -> temp.id == id);
 
         if (payment == null || payment.status != Invoice.PaymentStatus.WAITING) {
             return false;

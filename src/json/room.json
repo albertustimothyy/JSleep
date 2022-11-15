@@ -1,1 +1,1 @@
-[{"size":12,"name":"Albertus Timothy","facility":"AC","price":{"price":100000.0,"discount":0.0},"bedType":"SINGLE","city":"DEPOK","address":"jl kutek","accountId":0,"booked":[],"id":0}]
+[{"size":12,"name":"Albertus Timothy","facility":"AC","price":{"price":100000.0,"discount":0.0},"bedType":"SINGLE","city":"DEPOK","address":"jl kutek","accountId":0,"booked":["Jun 18, 2022, 12:00:00 AM","Jun 19, 2022, 12:00:00 AM"],"id":0}]
