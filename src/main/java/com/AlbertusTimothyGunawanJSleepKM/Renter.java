@@ -13,7 +13,7 @@ public class Renter extends Serializable {
     public static final String REGEX_PHONE = "^[0-9]{9,12}$";
 
     public Renter(String username, String phoneNumber, String address) {
-        super();
+        super() ;
         this.username = username;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -28,28 +28,4 @@ public class Renter extends Serializable {
 
         return matcherName.find() && matcherPhone.find();
     }
-
-//    public Renter(String username) {
-//        super();
-//        this.username = username;
-//    }
-//
-//    public Renter(String username, String address) {
-//        super();
-//        this.username = username;
-//        this.address = address;
-//    }
-//
-//    public Renter(String username, int phoneNumber) {
-//        super();
-//        this.username = username;
-//        this.phoneNumber = phoneNumber;
-//    }
-//
-//    public Renter(String username, int phoneNumber, String address) {
-//        super();
-//        this.username = username;
-//        this.phoneNumber = phoneNumber;
-//        this.address = address;
-//    }
 }

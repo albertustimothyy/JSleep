@@ -9,28 +9,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.regex.Pattern;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account> {
-    public static final String REGEX_EMAIL = "^[A-Za-z0-9]+@[A-Za-z]+\\.[A-Za-z.]+[^.]$";
-    public static final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+\\.[.a-zA-Z][a-zA-Z]$";
+    public static final String REGEX_PASSWORD = "^(?=.[A-Z])(?=.[0-9])(?=.[a-z])(?=\\S+$).{8,}$";
     public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public static final Pattern  REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
+
     @JsonAutowired(value = Account.class, filepath = "src/json/account.json")
     public static JsonTable<Account> accountTable;
 
-
-    public AccountController() {
-
-    }
-
+    /**
+     * Tops up the balance of the account with the specified ID by the specified amount.
+     *
+     * @param id the ID of the account to top up
+     * @param balance the amount to add to the account's balance
+     * @return true if the balance was topped up successfully, or false if the account could not be found
+     * @author Albertus Timothy
+     */
     @PostMapping("/{id}/topUp")
     boolean topUp (
-            @RequestParam int id,
+            @PathVariable int id,
             @RequestParam double balance
     ) {
         for(Account singleAccount : accountTable) {
@@ -42,6 +44,15 @@ public class AccountController implements BasicGetController<Account> {
         return false;
     }
 
+    /**
+     * Registers a new account with the specified name, email, and password. The password is hashed using the MD5 algorithm.
+     *
+     * @param name the name of the new account
+     * @param email the email address of the new account
+     * @param password the password of the new account
+     * @return the newly created Account, or null if the email address is already in use or the name is blank
+     * @author Albertus Timothy
+     */
     @PostMapping("/register")
     Account register(
             @RequestParam String name,
@@ -67,8 +78,9 @@ public class AccountController implements BasicGetController<Account> {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        accountTable.add(new Account(name, email, generatedPassword));
-        return new Account(name, email, generatedPassword);
+        Account newAccount = new Account(name, email, generatedPassword);
+        accountTable.add(newAccount);
+        return newAccount;
     }
 
     @Override
@@ -76,6 +88,14 @@ public class AccountController implements BasicGetController<Account> {
         return accountTable;
     }
 
+    /**
+     * Logs in a user with the given email and password.
+     *
+     * @param email the email address of the user
+     * @param password the password of the user
+     * @return the account of the logged in user, or null if the login failed
+     * @author Albertus Timothy
+     */
     @PostMapping("/login")
     Account login (
             @RequestParam String email,
@@ -99,12 +119,21 @@ public class AccountController implements BasicGetController<Account> {
         }
         String newPassword = generatedPassword;
         return Algorithm.<Account>find(accountTable, temp -> (temp.email.equals(email)) && temp.password.equals(newPassword));
-
     }
 
+    /**
+     * Registers a new renter for the specified account.
+     *
+     * @param id the ID of the account
+     * @param username the username of the renter
+     * @param address the address of the renter
+     * @param phoneNumber the phone number of the renter
+     * @return the newly created renter, or null if the registration failed
+     * @author Albertus Timothy
+     */
     @PostMapping("/{id}/registerRenter")
     Renter registerRenter (
-            @RequestParam int id,
+            @PathVariable int id,
             @RequestParam String username,
             @RequestParam  String address,
             @RequestParam String phoneNumber
@@ -117,20 +146,4 @@ public class AccountController implements BasicGetController<Account> {
         }
         return null;
     }
-//    @GetMapping
-//    String index() { return "account page"; }
-//
-//    @PostMapping("/register")
-//    Account register
-//            (
-//                    @RequestParam String name,
-//                    @RequestParam String email,
-//                    @RequestParam String password
-//            )
-//    {
-//        return new Account(name, email, password);
-//    }
-//
-//    @GetMapping("/{id}")
-//    String getById(@PathVariable int id) { return "account id " + id + " not found!"; }
 }

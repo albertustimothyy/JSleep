@@ -1,5 +1,5 @@
 package com.AlbertusTimothyGunawanJSleepKM;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.Calendar;
 
@@ -7,13 +7,16 @@ public class Payment extends Invoice{
     public Date to;
     public Date from;
     private int roomId;
+    public double totalPrice;
 
-    public Payment(int buyerId, int renterId, int roomId, Date from, Date to) {
+    public Payment(int buyerId, int renterId, int roomId, Date from, Date to, double totalPrice) {
         super(buyerId, renterId);
         this.roomId = roomId;
         this.from = from;
         this.to = to;
+        this.totalPrice = totalPrice;
     }
+
     public Payment(Account buyer, Renter renter, int roomId, Date from, Date to) {
         super(buyer, renter);
         this.roomId = roomId;
@@ -28,7 +31,6 @@ public class Payment extends Invoice{
     public int getRoomId() {
         return roomId;
     }
-
 
     public static boolean availability(Date from,Date to,Room room){
         Calendar start = Calendar.getInstance();
@@ -59,7 +61,6 @@ public class Payment extends Invoice{
         }
         return false;
     }
-
 }
 
 

@@ -7,7 +7,7 @@ public enum Facility {
     Balcony,
     AC,
     FitnessCenter,
-    Refigerator,
+    Refrigerator,
     Restaurant,
     SwimmingPool
 }

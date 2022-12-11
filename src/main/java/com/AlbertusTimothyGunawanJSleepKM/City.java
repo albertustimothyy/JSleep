@@ -1,6 +1,10 @@
 package com.AlbertusTimothyGunawanJSleepKM;
 
-
+/**
+ * This enum represents a city in Indonesia.
+ *
+ * @author Albertus Timothy
+ */
 public enum City {
     SURABAYA,
     DEPOK,

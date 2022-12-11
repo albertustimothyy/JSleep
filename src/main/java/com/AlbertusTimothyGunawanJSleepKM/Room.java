@@ -1,4 +1,5 @@
 package com.AlbertusTimothyGunawanJSleepKM;
+
 import com.AlbertusTimothyGunawanJSleepKM.dbjson.Serializable;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Date;
 public class Room extends Serializable {
     public int size;
     public String name;
-    public Facility facility;
+    public ArrayList<Facility> facility;
     public Price price;
     public BedType bedType;
     public City city;
@@ -15,7 +16,7 @@ public class Room extends Serializable {
     public int accountId;
     public ArrayList<Date> booked = new ArrayList<>();
 
-    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address) {
+    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address, BedType bedType) {
         super();
         this.accountId = accountId;
         this.size = size;
@@ -24,7 +25,7 @@ public class Room extends Serializable {
         this.price = price;
         this.address = address;
         this.city = city;
-        this.bedType = BedType.SINGLE;
+        this.bedType = bedType;
     }
 
     public String toString() {
@@ -32,5 +33,4 @@ public class Room extends Serializable {
                 + this.facility + "\n" + this.price + "\nAddress: " + this.address + "\nBed Type: " + this.bedType +
                 "\nCity: " + this.city;
     }
-
 }
